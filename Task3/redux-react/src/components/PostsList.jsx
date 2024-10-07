@@ -15,7 +15,7 @@ const PostsList = () => {
 
   return (
     <div>
-      <h2 className='ms-3 mt-4'>Posts</h2>
+      <h2 className='ms-3 mt-4'>Bài viết</h2>
       <ul className='list-group' >
         {posts.map((post) => (
           <li className='list-group-item' key={post.id}>
