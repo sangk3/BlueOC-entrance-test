@@ -4,19 +4,20 @@
 
 ## Cấu trúc thư mục dự án react-redux app:  
 
- `├──` public
- `│   └──` index.html
- `└──` src
- `     └──`components/
- `     |   └──`PostForm.jsx
- `     |   └──`PostsList.jsx  
- `     |___`redux/
- `     |   |___`reducers/
- `     |       |___`postReducer.js         
- `     |   |___`actions.js
- `     |   |___`store.js                                           
- `     |___`App.js
- `     |___`index.js
+redux-react/
+├── public/
+│   └── index.html
+└── src/
+    ├── components/
+    │   ├── PostForm.jsx
+    │   └── PostsList.jsx  
+    ├── redux/
+    │   ├── actions.js
+    │   ├── reducers/
+    │   │   └── postReducer.js         
+    │   └── store.js                                           
+    ├── App.js
+    └── index.js
 
 ## Các thành phần chính của của 1 ứng dụng React-Redux
 + /public/index.html: tệp HTML chính của ứng dụng React. Có nhiệm vụ gắn kết truyền component vào
