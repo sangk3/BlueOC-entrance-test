@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+## Setup cho dự án react-redux
++ sử dụng npx create-react-app redux-react khởi tạo dự án redux app
++ Cài đặt các thư viện cần thiết như: redux react-redux redux-thunk 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Cấu trúc thư mục dự án react-redux app:  
 
-## Available Scripts
+ `├──` public
+ `│   └──` index.html
+ `└──` src
+ `     └──`components/
+ `     |   └──`PostForm.jsx
+ `     |   └──`PostsList.jsx  
+ `     |___`redux/
+ `     |   |___`reducers/
+ `     |       |___`postReducer.js         
+ `     |   |___`actions.js
+ `     |   |___`store.js                                           
+ `     |___`App.js
+ `     |___`index.js
 
-In the project directory, you can run:
+## Các thành phần chính của của 1 ứng dụng React-Redux
++ /public/index.html: tệp HTML chính của ứng dụng React. Có nhiệm vụ gắn kết truyền component vào
++ index.js: tệp JavaScript chính dùng để khởi tạo lên ứng dụng React.Giúp gắn kết các Component vào DOM, sử dụng để cấu hình Redux Store
++ App.js: ây là component chính của ứng dụng React, nơi chứa các component khác. Các component được khởi tạo từ /components sẽ dược truyền vào App.js, cho phép xây dựng các thành phần của 1 trang web
++ /components: Sư dụng các function xây dựng lên các phần cho giao diện người dùng(UI) 
++ /redux/actions: Xây dựng các function actions cho việc Fetch dữ liệu từ phía jsonplaceholder.typicode và thêm các posts mới
++ /redux/store.js: Kho lưu trữ và quản lý các state. Dữ liệu từ phía actions trả về sẽ được lưu trữ trong redux store phục vụ cho việc quản lý state, giúp dễ bảo trì hơn
++ /redux/reducers/postReducers.js: xử lý các dispatch mà actions gửi đến store, Xác định type của actions và thay đổi state với payload được gửi dispatch theo actions ===> return về state mới là các bài viết mới được thêm 
 
-### `npm start`
+## Chi tiết hoạt động của dự án react-redux
+# Component: 
++ Xây dựng lên 2 components chính là PostForm.jsx(sử dụng để thêm posts mới) và PostsList.jsx(Sử dụng để render ra toàn bộ posts đã có trên https://jsonplaceholder.typicode.com/posts)
++ PostForm.jsx: Cho phép người dùng thêm bài viết mới bằng cách sử dụng dispatch(addPost()) để gọi action creator từ actions.js.
++ PostsList.jsx: Hiển thị danh sách tất cả các bài viết đã có, sử dụng dispatch(fetchPosts()) để lấy dữ liệu từ API.
+# action (/redux/actions.js)
++ Xây dựng các Async function gửi request đến server get dữ liệu về với fetchPosts() và async function addPost() để add new posts
++ dispatch({type: , payload:}) các async function đến redux-store để cập nhật state 
+# store(/redux/store.js)
++ import các thư viện redux, redux-thunk, redux-devtools-extension và reducers
++ Sử dụng createStore để khởi tạo store với postReducer, nơi quản lý state của ứng dụng.
++ redux-thunk: Với mỗi action gửi đến redux-store sẽ được kiểm tra bởi redux-thunk để xác định actions là đồng bộ hay bất đồng bộ. Nếu là bất đồng bộ thì sẽ action sẽ được dispatch() khi actions đó được hoàn thành (redux-thunk giống Middleware)
+# reducers(redux/reducers)
++ Thành phần reducers sẽ xử lý các actions được dispatch() dựa vào type và payload để cập nhật state 
++ reducers sẽ trả về state mới sau khi phân tích và xử lý các actions. các state này sẽ được lý bởi redux-store và để hiển thị các state này từ phía componentt cần sử dụng useSelector là 1 hook
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Chạy dự án
++ Open terminal với path Task3/react-redux chạy câu lệnh npm start để chạy ứng dụng
