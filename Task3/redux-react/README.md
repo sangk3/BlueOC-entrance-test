@@ -3,22 +3,20 @@
 + Cài đặt các thư viện cần thiết như: redux react-redux redux-thunk 
 
 ## Cấu trúc thư mục dự án react-redux app:  
-
 redux-react/
 ├── public/
 │   └── index.html
 └── src/
     ├── components/
     │   ├── PostForm.jsx
-    │   └── PostsList.jsx  
+    │   └── PostsList.jsx
     ├── redux/
     │   ├── actions.js
     │   ├── reducers/
-    │   │   └── postReducer.js         
-    │   └── store.js                                           
+    │   │   └── postReducer.js
+    │   └── store.js
     ├── App.js
     └── index.js
-
 ## Các thành phần chính của của 1 ứng dụng React-Redux
 + /public/index.html: tệp HTML chính của ứng dụng React. Có nhiệm vụ gắn kết truyền component vào
 + index.js: tệp JavaScript chính dùng để khởi tạo lên ứng dụng React.Giúp gắn kết các Component vào DOM, sử dụng để cấu hình Redux Store
